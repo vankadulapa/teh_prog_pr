@@ -1,8 +1,108 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Главная";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+
+    <section class="py-5 text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">
+                ЭлектроГик
+            </h1>
+
+            <p class="lead text-muted">
+                Магазин для настоящих гиков
+            </p>
+
+            <p class="fs-5">
+                Игры, консоли, фигурки и книги —
+                всё самое интересное в одном месте.
+            </p>
+
+            <div class="mt-4">
+                <a asp-controller="Product"
+                   asp-action="Index"
+                   class="btn btn-primary btn-lg me-2">
+                    Перейти в каталог
+                </a>
+
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="btn btn-outline-dark btn-lg">
+                    Войти
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="row g-4 py-5">
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Консоли</h3>
+                    <p class="card-text">
+                        PlayStation, Nintendo и другие игровые системы
+                        для настоящих любителей игр.
+                    </p>
+                    <a asp-controller="Product"
+                       asp-action="Index"
+                       class="btn btn-outline-primary">
+                        Смотреть товары
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Игры</h3>
+                    <p class="card-text">
+                        Популярные игры для современных игровых платформ.
+                    </p>
+                    <a asp-controller="Product"
+                       asp-action="Index"
+                       class="btn btn-outline-primary">
+                        Смотреть товары
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Фигурки</h3>
+                    <p class="card-text">
+                        Коллекционные фигурки любимых персонажей.
+                    </p>
+                    <a asp-controller="Product"
+                       asp-action="Index"
+                       class="btn btn-outline-primary">
+                        Смотреть товары
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="py-5 text-center">
+        <div class="p-5 bg-light rounded-3">
+            <h2>Найди что-нибудь для себя</h2>
+
+            <p class="lead">
+                Загляни в каталог «ЭлектроГик» и выбери
+                что-нибудь интересное.
+            </p>
+
+            <a asp-controller="Product"
+               asp-action="Index"
+               class="btn btn-dark btn-lg">
+                Открыть каталог
+            </a>
+        </div>
+    </section>
+
 </div>
