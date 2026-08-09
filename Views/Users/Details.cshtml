@@ -1,0 +1,52 @@
+@model pr4.Models.User
+
+@{
+    ViewData["Title"] = "Информация о пользователе";
+}
+
+<h1>Информация о пользователе</h1>
+
+<hr />
+
+<dl class="row">
+
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.UserId</dd>
+
+    <dt class="col-sm-3">Логин</dt>
+    <dd class="col-sm-9">@Model.Login</dd>
+
+    <dt class="col-sm-3">Пароль</dt>
+    <dd class="col-sm-9">@Model.Password</dd>
+
+    <dt class="col-sm-3">ФИО</dt>
+    <dd class="col-sm-9">@Model.FullName</dd>
+
+    <dt class="col-sm-3">Телефон</dt>
+    <dd class="col-sm-9">@Model.PhoneNum</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Дата рождения</dt>
+    <dd class="col-sm-9">
+        @Model.DateOfBirth.ToString("dd.MM.yyyy")
+    </dd>
+
+    <dt class="col-sm-3">Роль</dt>
+    <dd class="col-sm-9">
+        @Model.Role?.RoleName
+    </dd>
+
+</dl>
+
+<a asp-action="Edit"
+   asp-route-userid="@Model.UserId"
+   class="btn btn-warning">
+    Изменить
+</a>
+
+<a asp-action="Index"
+   class="btn btn-secondary">
+    Назад
+</a>

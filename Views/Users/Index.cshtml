@@ -1,0 +1,71 @@
+@model IEnumerable<pr4.Models.User>
+
+@{
+    ViewData["Title"] = "Пользователи";
+}
+
+<h1>Пользователи</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Добавить пользователя</a>
+</p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>ФИО</th>
+            <th>Телефон</th>
+            <th>Email</th>
+            <th>Дата рождения</th>
+            <th>Роль</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.Login</td>
+                <td>@user.Password</td>
+                <td>@user.FullName</td>
+                <td>@user.PhoneNum</td>
+                <td>@user.Email</td>
+                <td>@user.DateOfBirth.ToString("dd.MM.yyyy")</td>
+                <td>@user.Role?.RoleName</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-userid="@user.UserId"
+                       class="btn btn-info btn-sm">
+                        Подробнее
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-userid="@user.UserId"
+                       class="btn btn-warning btn-sm">
+                        Изменить
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-userid="@user.UserId"
+                       class="btn btn-danger btn-sm">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model pr4.Models.User
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<h2>Регистрация</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Register" method="post">
+
+    <div class="mb-3">
+        <label>Логин</label>
+        <input asp-for="Login" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Пароль</label>
+        <input asp-for="Password" class="form-control" type="password" />
+    </div>
+
+    <div class="mb-3">
+        <label>ФИО</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Телефон</label>
+        <input asp-for="PhoneNum" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Дата рождения</label>
+        <input asp-for="DateOfBirth"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <button class="btn btn-success">
+        Зарегистрироваться
+    </button>
+
+</form>

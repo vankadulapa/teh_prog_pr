@@ -1,0 +1,90 @@
+@model pr4.Models.User
+
+@{
+    ViewData["Title"] = "Добавить пользователя";
+}
+
+<h1>Добавить пользователя</h1>
+
+<hr />
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Login" class="form-label">Логин</label>
+        <input asp-for="Login" class="form-control" />
+        <span asp-validation-for="Login" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Пароль</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label">ФИО</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PhoneNum" class="form-label">Телефон</label>
+        <input asp-for="PhoneNum" class="form-control" />
+        <span asp-validation-for="PhoneNum" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label">
+            Дата рождения
+        </label>
+
+        <input asp-for="DateOfBirth"
+               type="date"
+               class="form-control" />
+
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="RoleId" class="form-label">
+            Роль
+        </label>
+
+        <select asp-for="RoleId" class="form-select">
+            <option value="">-- Выберите роль --</option>
+
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.RoleId">
+                    @role.RoleName
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="RoleId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Добавить пользователя
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Назад
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

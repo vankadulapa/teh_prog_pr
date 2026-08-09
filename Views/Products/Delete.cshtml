@@ -1,0 +1,59 @@
+﻿@model pr4.Models.Product
+
+@{
+    ViewData["Title"] = "Удаление товара";
+}
+
+<h1>Удаление товара</h1>
+
+<div class="alert alert-danger">
+    <strong>Внимание!</strong> Вы действительно хотите удалить этот товар?
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+
+        <h4>@Model.Name</h4>
+
+        <p>
+            <strong>Бренд:</strong>
+            @Model.Brand?.BrandName
+        </p>
+
+        <p>
+            <strong>Категория:</strong>
+            @Model.Category?.CategoryName
+        </p>
+
+        <p>
+            <strong>Цена:</strong>
+            @Model.Price.ToString("0.00")
+        </p>
+
+        <p>
+            <strong>На складе:</strong>
+            @Model.InStock
+        </p>
+
+        <p>
+            <strong>Описание:</strong>
+            @Model.Description
+        </p>
+
+    </div>
+
+</div>
+
+<form asp-action="Delete" method="post">
+
+    <input type="hidden" asp-for="ProductId" />
+
+    <button type="submit" class="btn btn-danger">
+        Да, удалить
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Отмена
+    </a>
+
+</form>

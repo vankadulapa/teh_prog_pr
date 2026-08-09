@@ -1,0 +1,61 @@
+﻿@model pr4.Models.User
+
+@{
+    ViewData["Title"] = "Удаление пользователя";
+}
+
+<h1>Удаление пользователя</h1>
+
+<div class="alert alert-danger">
+    <strong>Внимание!</strong> Вы действительно хотите удалить этого пользователя?
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+
+
+        <p>
+            <strong>Логин:</strong>
+            @Model.Login
+        </p>
+
+        <p>
+            <strong>ФИО:</strong>
+            @Model.FullName
+        </p>
+
+        <p>
+            <strong>Роль:</strong>
+            @Model.Role?.RoleName
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            @Model.Email
+        </p>
+
+        <p>
+            <strong>Телефон:</strong>
+            @Model.PhoneNum
+        </p>
+
+    </div>
+
+
+</div>
+
+<form asp-action="Delete" method="post">
+
+
+    <input type="hidden" asp-for="UserId" />
+
+    <button type="submit" class="btn btn-danger">
+        Да, удалить
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Отмена
+    </a>
+
+
+</form>

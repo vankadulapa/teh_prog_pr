@@ -1,0 +1,85 @@
+﻿@model pr4.Models.Product
+
+@{
+    ViewData["Title"] = "Добавление товара";
+}
+
+<h1>Добавление товара</h1>
+
+<hr />
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Название</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BrandId" class="form-label">Бренд</label>
+
+        <select asp-for="BrandId" class="form-select">
+            <option value="">-- Выберите бренд --</option>
+
+            @foreach (var brand in ViewBag.Brands)
+            {
+                <option value="@brand.BrandId">
+                    @brand.BrandName
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="BrandId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Категория</label>
+
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">-- Выберите категорию --</option>
+
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.CategoryId">
+                    @category.CategoryName
+                </option>
+            }
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Цена</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="InStock" class="form-label">Количество на складе</label>
+        <input asp-for="InStock" class="form-control" />
+        <span asp-validation-for="InStock" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Описание</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Добавить
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Назад
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

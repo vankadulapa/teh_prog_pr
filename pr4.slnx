@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../ElectroGeekLibrary/ElectroGeekLibrary.csproj" Id="00b9db4b-6bcd-4923-afbc-cc587ba268e6" />
+  <Project Path="pr4.csproj" />
+</Solution>

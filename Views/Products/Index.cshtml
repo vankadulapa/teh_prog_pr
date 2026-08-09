@@ -1,0 +1,107 @@
+﻿@model IEnumerable<pr4.Models.Product>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@{
+    ViewData["Title"] = "Каталог товаров";
+}
+
+<h1>Каталог товаров</h1>
+
+
+<p>
+    @if (User.IsInRole("Администратор"))
+    {
+        <a class="btn btn-success"
+           asp-action="Create">
+            Добавить товар
+        </a>
+    }
+</p>
+
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+
+            <th>
+                Цена
+            </th>
+
+            <th>
+                Остаток
+            </th>
+
+            <th>
+                Описание
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.Name
+                </td>
+
+                <td>
+                    @item.Price ₽
+                </td>
+
+                <td>
+                    @item.InStock
+                </td>
+
+                <td>
+                    @item.Description
+                </td>
+
+
+                <td>
+
+                    <a class="btn btn-info"
+                       asp-action="Details"
+                       asp-route-productid="@item.ProductId">
+                        Просмотр
+                    </a>
+
+
+                    @if (User.IsInRole("Администратор"))
+                    {
+                        <a class="btn btn-warning"
+                           asp-action="Edit"
+                           asp-route-productid="@item.ProductId">
+                            Изменить
+                        </a>
+
+                        <a class="btn btn-danger"
+                           asp-action="Delete"
+                           asp-route-productid="@item.ProductId">
+                            Удалить
+                        </a>
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model List<pr4.Models.Product>
+
+@{
+    ViewData["Title"] = "Тест DLL";
+}
+
+<h1>Тест библиотеки ElectroGeekLibrary</h1>
+
+<form method="post" asp-controller="DllTest" asp-action="Index">
+
+    <div class="mb-3">
+        <label class="form-label">Выберите товар:</label>
+
+        <select name="productId" class="form-select">
+            @foreach (var product in Model)
+            {
+                <option value="@product.ProductId">
+                    @product.Name — @product.Price.ToString("N2") руб.
+                </option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Рассчитать
+    </button>
+
+</form>
+
+@if (ViewBag.ProductInfo != null)
+{
+    <hr />
+
+    <h3>Результат работы DLL</h3>
+
+    <div class="alert alert-info">
+        <pre>@ViewBag.ProductInfo</pre>
+    </div>
+}
