@@ -15,8 +15,6 @@ obj/
 x64/
 x86/
 
-## Logs
-Logs/
 
 ## Generated files
 *.pdb
